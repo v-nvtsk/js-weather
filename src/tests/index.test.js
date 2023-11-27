@@ -7,8 +7,12 @@ describe('Weather forecast app', () => {
   let currentIconEl;
 
   beforeEach(() => {
-    const parent = document.createElement('div');
-    pageInit(parent);
+    const container = document.createElement('div')
+    container.id = 'app';
+    document.body.append(container)
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+
+    const parent = document.querySelector('#app');
     currentWeatherEl = parent.querySelector('#currentWeather');
     currentCityEl = currentWeatherEl.querySelector('#currentCity');
     currentTempEl = currentWeatherEl.querySelector('#currentTemp');
