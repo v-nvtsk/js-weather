@@ -1,0 +1,52 @@
+{
+  "plugins": [
+    "jest",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "airbnb/base",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "node_modules",
+    ".vscode",
+    ".git"
+  ],
+  "rules": {
+    "no-console": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "comments": 65,
+        "tabWidth": 2,
+        "ignoreUrls": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "no-plusplus": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  }
+}
