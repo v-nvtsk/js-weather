@@ -42,10 +42,8 @@
   },
   "lint-staged": {
     "*.js": [
-      "echo \"\n===\n>> Start lint-staged from package.json\"",
       "eslint ./src --fix --color",
-      "echo -e \"\n===\n>> Run tests.",
-      "jest --bail --findRelatedTests --passWithNoTests"
+      "jest --bail --findRelatedTests"
     ]
   }
 }
