@@ -5,7 +5,6 @@ import renderCitiesList from './render-cities-list';
 import citiesCache from './cities-cache';
 import { setLocation } from './map';
 
-let mapEl;
 let currentWeatherEl;
 let currentCityEl;
 let currentTempEl;
@@ -61,7 +60,7 @@ export function pageInit(parent) {
     }
   });
 
-  mapEl = appendParentWithChild(parent, 'div', 'map');
+  appendParentWithChild(parent, 'div', 'map');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
