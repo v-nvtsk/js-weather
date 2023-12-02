@@ -23,6 +23,12 @@ describe('citiesCache tests', () => {
     expect(citiesCache.cities).toEqual(['MADRID']);
   });
 
+  it('should not add empty item to citiesCache', () => {
+    citiesCache.addCity('Madrid');
+    citiesCache.addCity('');
+    expect(citiesCache.cities).toEqual(['MADRID']);
+  });
+
   it('should insert new item to start of citiesCache', () => {
     citiesCache.addCity('Madrid');
     expect(citiesCache.cities).toEqual(['MADRID']);
