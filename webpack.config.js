@@ -23,7 +23,7 @@ module.exports = (env) => {
       rules: [
         {
           test: /\.html$/i,
-          loader: "html-loader",
+          loader: 'html-loader',
           options: {
             minimize: true
           }
@@ -35,11 +35,10 @@ module.exports = (env) => {
       ]
     },
     plugins: [
-      new HtmlWebpackPlugin(
-        {
-          template: path.resolve(__dirname, 'src', 'public', 'index.html'),
-          filename: 'index.html'
-        }),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'src', 'public', 'index.html'),
+        filename: 'index.html'
+      }),
       new webpack.ProgressPlugin()
     ]
   }
