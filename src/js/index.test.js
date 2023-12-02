@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 import { pageInit, weatherRender } from './index';
+import getWeatherInCity from './weather';
 
 jest.mock('./ip');
 jest.mock('./weather');
@@ -67,6 +68,13 @@ describe('Weather forecast app', () => {
       expect(currentIconEl.innerHTML).toEqual(
         `<img src=\"https://openweathermap.org/img/wn/${weatherData.icon}@2x.png\">`
       );
+    });
+
+    it('button click calls getWeatherInCity', async () => {
+      inputCity.value = 'London';
+      submitBtn.click();
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
   });
 });
