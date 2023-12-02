@@ -11,9 +11,9 @@ describe('Weather forecast app', () => {
   let submitBtn;
 
   beforeAll(() => {
-    const container = document.createElement('div')
+    const container = document.createElement('div');
     container.id = 'app';
-    document.body.append(container)
+    document.body.append(container);
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
     const parent = document.querySelector('#app');
@@ -27,10 +27,9 @@ describe('Weather forecast app', () => {
     submitBtn = inputGroup.querySelector('#submitBtn');
   });
   describe('pageInit', () => {
-
     it('pageInit is a function', () => {
       expect(pageInit).toBeInstanceOf(Function);
-    })
+    });
     it('pageInit creates initial markup', () => {
       expect(currentWeatherEl).not.toBeNull();
       expect(currentCityEl).not.toBeNull();
@@ -42,28 +41,27 @@ describe('Weather forecast app', () => {
       expect(inputGroup).not.toBeNull();
       expect(inputCity).not.toBeNull();
       expect(submitBtn).not.toBeNull();
-    })
-  })
+    });
+  });
 
   describe('weatherRender', () => {
     const weatherData = {
       city: 'London',
       temp: 10,
       icon: 'https://openweathermap.org/img/wn/10d@2x.png'
-    }
+    };
     beforeEach(() => {
       weatherRender(weatherData);
-    })
+    });
 
     it('weatherRender is a function', () => {
       expect(weatherRender).toBeInstanceOf(Function);
-    })
-
+    });
 
     it('weatherRender renders weather data', () => {
       expect(currentCityEl.innerHTML).toEqual(`Current city: ${weatherData.city}`);
       expect(currentTempEl.innerHTML).toEqual(`Current temperature: ${weatherData.temp}`);
       expect(currentIconEl.innerHTML).toEqual(`<img src=\"${weatherData.icon}\">`);
-    })
-  })
+    });
+  });
 });

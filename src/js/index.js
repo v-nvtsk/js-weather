@@ -13,7 +13,6 @@ function appendParentWithChild(parentEl, tag, childId = '') {
 }
 
 export function pageInit(parent) {
-
   const header = appendParentWithChild(parent, 'h1', 'header');
   header.innerHTML = 'Weather forecast';
 
@@ -40,6 +39,5 @@ export function weatherRender(weather) {
 document.addEventListener('DOMContentLoaded', () => {
   const appContainer = document.querySelector('#app');
   pageInit(appContainer);
-  weatherRender()
-})
-
+  weatherRender();
+});
