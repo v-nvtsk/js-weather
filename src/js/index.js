@@ -20,6 +20,14 @@ export function weatherRender(weather) {
   }
 }
 
+export async function updateWeather(city) {
+  const weather = await getWeatherInCity(city);
+  if (weather) {
+    weatherRender(weather);
+    citiesCache.addCity(weather.city);
+  }
+}
+
 export function pageInit(parent) {
   const header = appendParentWithChild(parent, 'h1', 'header');
   header.innerHTML = 'Weather forecast';
@@ -38,14 +46,16 @@ export function pageInit(parent) {
   inputGroup.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const city = inputCity.value;
-    const weather = await getWeatherInCity(city);
-    if (weather) {
-      weatherRender(weather);
-      citiesCache.addCity(weather.city);
-    }
+    updateWeather(city);
   });
 
   savedCitiesList = appendParentWithChild(inputGroup, 'ul', 'savedCitiesList');
+  savedCitiesList.addEventListener('click', (ev) => {
+    if (ev.target.tagName === 'li') {
+      const city = ev.target.innerHTML;
+      updateWeather(city);
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -58,9 +68,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   const city = await getCityByIP();
-  const weather = await getWeatherInCity(city);
-  if (weather) {
-    weatherRender(weather);
-    citiesCache.addCity(weather.city);
-  }
+  updateWeather(city);
 });
