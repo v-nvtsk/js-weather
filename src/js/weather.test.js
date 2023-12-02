@@ -44,7 +44,8 @@ describe('getWeatherInCity', () => {
     expect(result).toEqual({
       city: 'Москва',
       temp: -3.43,
-      icon: '04d'
+      icon: '04d',
+      coord: [37.6156, 55.7522]
     });
   });
   it('getWeatherInCity returns not found', async () => {

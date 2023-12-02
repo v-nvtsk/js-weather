@@ -3,7 +3,9 @@ import getWeatherInCity from './weather';
 import appendParentWithChild from './appendParentWithChild';
 import renderCitiesList from './render-cities-list';
 import citiesCache from './cities-cache';
+import { setLocation } from './map';
 
+let mapEl;
 let currentWeatherEl;
 let currentCityEl;
 let currentTempEl;
@@ -25,6 +27,7 @@ export async function updateWeather(city) {
   if (weather) {
     weatherRender(weather);
     citiesCache.addCity(weather.city);
+    setLocation(weather.coord);
   }
 }
 
@@ -57,6 +60,8 @@ export function pageInit(parent) {
       updateWeather(city);
     }
   });
+
+  mapEl = appendParentWithChild(parent, 'div', 'map');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

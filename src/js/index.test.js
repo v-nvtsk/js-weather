@@ -5,6 +5,7 @@ import getWeatherInCity from './weather';
 
 jest.mock('./ip');
 jest.mock('./weather');
+jest.mock('./map');
 
 describe('Weather forecast app', () => {
   let currentWeatherEl;

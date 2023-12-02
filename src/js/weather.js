@@ -9,12 +9,14 @@ export default async function getWeatherInCity(cityName, lang = 'ru') {
   let city;
   let temp;
   let icon;
+  let coord;
   if (data.cod === 200) {
     city = data.name;
     temp = data.main.temp;
     icon = data.weather[0].icon;
+    coord = [data.coord.lon, data.coord.lat];
   } else {
     return null;
   }
-  return { city, temp, icon };
+  return { city, temp, icon, coord };
 }
