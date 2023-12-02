@@ -51,6 +51,7 @@ export function pageInit(parent) {
 document.addEventListener('DOMContentLoaded', async () => {
   const appContainer = document.querySelector('#app');
   pageInit(appContainer);
+  citiesCache.init();
 
   const city = await getCityByIP();
   const weather = await getWeatherInCity(city);

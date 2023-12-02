@@ -4,6 +4,9 @@ const CITY_LIST = 'cities';
 
 export default {
   cities: [],
+  init() {
+    this.loadItems();
+  },
   loadItems() {
     this.cities = getLocalStorageItem(CITY_LIST) || [];
     return this.cities;
