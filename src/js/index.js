@@ -1,3 +1,6 @@
+import getCityByIP from './ip';
+import getWeatherInCity from './weather';
+
 let currentWeatherEl;
 let currentCityEl;
 let currentTempEl;
@@ -32,12 +35,15 @@ export function weatherRender(weather) {
   if (weather) {
     currentCityEl.innerHTML = `Current city: ${weather.city}`;
     currentTempEl.innerHTML = `Current temperature: ${weather.temp}`;
-    currentIconEl.innerHTML = `<img src=${weather.icon}>`;
+    currentIconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.icon}@2x.png">`;
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const appContainer = document.querySelector('#app');
   pageInit(appContainer);
-  weatherRender();
+
+  const city = await getCityByIP();
+  const weather = await getWeatherInCity(city);
+  weatherRender(weather);
 });
