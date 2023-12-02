@@ -18,6 +18,7 @@
     ".git"
   ],
   "rules": {
+    "prettier/prettier": "error",
     "no-console": "off",
     "indent": [
       "error",
