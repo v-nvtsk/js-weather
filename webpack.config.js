@@ -27,6 +27,10 @@ module.exports = (env) => {
           options: {
             minimize: true
           }
+        },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader']
         }
       ]
     },
