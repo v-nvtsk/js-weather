@@ -47,6 +47,7 @@ export function pageInit(parent) {
     ev.preventDefault();
     const city = inputCity.value;
     updateWeather(city);
+    inputCity.value = '';
   });
 
   savedCitiesList = appendParentWithChild(inputGroup, 'ul', 'savedCitiesList');
