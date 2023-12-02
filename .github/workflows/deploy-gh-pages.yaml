@@ -29,6 +29,12 @@ jobs:
           output: coverage/badges.svg
           jsonPath: totals.percent_covered
 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+
       - name: Build prod
         run: |
           npm run build:prod
