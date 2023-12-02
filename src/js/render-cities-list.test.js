@@ -27,4 +27,11 @@ describe('renderCitiesList', () => {
       expect(parent.innerHTML).toBe(result);
     });
   });
+
+  it('should clear parent', () => {
+    renderCitiesList(parent, ['Moscow', 'London', 'New York']);
+    renderCitiesList(parent, ['Minsk']);
+    const result = `<li id="">Minsk</li>`;
+    expect(parent.innerHTML).toBe(result);
+  });
 });
