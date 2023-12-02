@@ -19,10 +19,15 @@ jobs:
           npm ci
 
       - name: Test
-        run: npx jest --coverage
+        run: npm test
 
-      - name: Coverage Badge
-        uses: we-cli/coverage-badge-action@v1.0.1
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          source: coverage/coverage-summary.json
+          output: coverage/badges.svg
+          jsonPath: totals.percent_covered
 
       - name: Build prod
         run: |
@@ -32,5 +37,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: prod # The folder the action should deploy.
-
-          
