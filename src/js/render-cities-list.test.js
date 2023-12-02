@@ -14,7 +14,7 @@ describe('renderCitiesList', () => {
   const testData = [
     {
       cities: ['Moscow', 'London', 'New York'],
-      result: '<li id="">Moscow</li><li id="">London</li><li id="">New York</li>'
+      result: '<li>Moscow</li><li>London</li><li>New York</li>'
     },
     {
       cities: [],
@@ -31,7 +31,7 @@ describe('renderCitiesList', () => {
   it('should clear parent', () => {
     renderCitiesList(parent, ['Moscow', 'London', 'New York']);
     renderCitiesList(parent, ['Minsk']);
-    const result = `<li id="">Minsk</li>`;
+    const result = `<li>Minsk</li>`;
     expect(parent.innerHTML).toBe(result);
   });
 });
