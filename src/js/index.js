@@ -39,7 +39,10 @@ export function pageInit(parent) {
     ev.preventDefault();
     const city = inputCity.value;
     const weather = await getWeatherInCity(city);
-    weatherRender(weather);
+    if (weather) {
+      weatherRender(weather);
+      citiesCache.addCity(weather.city);
+    }
   });
 
   savedCitiesList = appendParentWithChild(inputGroup, 'ul', 'savedCitiesList');
