@@ -8,6 +8,7 @@ let currentTempEl;
 let currentIconEl;
 let inputCity;
 let submitBtn;
+let savedCitiesList;
 
 export function weatherRender(weather) {
   if (weather) {
@@ -38,6 +39,8 @@ export function pageInit(parent) {
     const weather = await getWeatherInCity(city);
     weatherRender(weather);
   });
+
+  savedCitiesList = appendParentWithChild(inputGroup, 'ul', 'savedCitiesList');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

@@ -13,6 +13,7 @@ describe('Weather forecast app', () => {
   let inputGroup;
   let inputCity;
   let submitBtn;
+  let savedCitiesList;
 
   beforeAll(() => {
     const container = document.createElement('div');
@@ -29,6 +30,7 @@ describe('Weather forecast app', () => {
     inputGroup = parent.querySelector('#inputGroup');
     inputCity = inputGroup.querySelector('#inputCity');
     submitBtn = inputGroup.querySelector('#submitBtn');
+    savedCitiesList = inputGroup.querySelector('#savedCitiesList');
   });
   describe('pageInit', () => {
     it('pageInit is a function', () => {
@@ -45,6 +47,7 @@ describe('Weather forecast app', () => {
       expect(inputGroup).not.toBeNull();
       expect(inputCity).not.toBeNull();
       expect(submitBtn).not.toBeNull();
+      expect(savedCitiesList).not.toBeNull();
     });
   });
 
