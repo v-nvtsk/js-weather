@@ -50,7 +50,7 @@ export function pageInit(parent) {
     inputCity.value = '';
   });
 
-  savedCitiesList = appendParentWithChild(inputGroup, 'ul', 'savedCitiesList');
+  savedCitiesList = appendParentWithChild(parent, 'ul', 'savedCitiesList');
   savedCitiesList.addEventListener('click', (ev) => {
     if (ev.target.tagName === 'LI') {
       const city = ev.target.innerHTML;
