@@ -1,6 +1,7 @@
 import getCityByIP from './ip';
 import getWeatherInCity from './weather';
 import appendParentWithChild from './appendParentWithChild';
+import renderCitiesList from './render-cities-list';
 
 let currentWeatherEl;
 let currentCityEl;
@@ -50,4 +51,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   const city = await getCityByIP();
   const weather = await getWeatherInCity(city);
   weatherRender(weather);
+  renderCitiesList(savedCitiesList, []);
 });
