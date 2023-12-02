@@ -1,0 +1,24 @@
+#savedCitiesList {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+  cursor: pointer;
+}
+
+#app {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#inputGroup {
+  display: flex;
+  gap: 20px;
+}
+
+#map {
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+}
