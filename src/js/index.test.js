@@ -1,6 +1,9 @@
 /* eslint-disable no-useless-escape */
 import { pageInit, weatherRender } from './index';
 
+jest.mock('./ip');
+jest.mock('./weather');
+
 describe('Weather forecast app', () => {
   let currentWeatherEl;
   let currentCityEl;
@@ -46,9 +49,9 @@ describe('Weather forecast app', () => {
 
   describe('weatherRender', () => {
     const weatherData = {
-      city: 'London',
-      temp: 10,
-      icon: 'https://openweathermap.org/img/wn/10d@2x.png'
+      city: 'Moscow',
+      temp: -3.43,
+      icon: '04d'
     };
     beforeEach(() => {
       weatherRender(weatherData);
@@ -61,7 +64,9 @@ describe('Weather forecast app', () => {
     it('weatherRender renders weather data', () => {
       expect(currentCityEl.innerHTML).toEqual(`Current city: ${weatherData.city}`);
       expect(currentTempEl.innerHTML).toEqual(`Current temperature: ${weatherData.temp}`);
-      expect(currentIconEl.innerHTML).toEqual(`<img src=\"${weatherData.icon}\">`);
+      expect(currentIconEl.innerHTML).toEqual(
+        `<img src=\"https://openweathermap.org/img/wn/${weatherData.icon}@2x.png\">`
+      );
     });
   });
 });
