@@ -17,6 +17,7 @@ jobs:
       - name: Install Packages
         run: |
           npm ci
+          npm test
 
       - name: Build prod
         run: |
