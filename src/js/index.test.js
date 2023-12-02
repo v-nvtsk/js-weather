@@ -32,7 +32,7 @@ describe('Weather forecast app', () => {
     inputGroup = parent.querySelector('#inputGroup');
     inputCity = inputGroup.querySelector('#inputCity');
     submitBtn = inputGroup.querySelector('#submitBtn');
-    savedCitiesList = inputGroup.querySelector('#savedCitiesList');
+    savedCitiesList = parent.querySelector('#savedCitiesList');
   });
 
   describe('pageInit', () => {
