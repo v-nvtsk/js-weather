@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
-import { pageInit, weatherRender } from './index';
+import { pageInit, weatherRender, updateWeather } from './index';
+import renderCitiesList from './render-cities-list';
 import getWeatherInCity from './weather';
 
 jest.mock('./ip');
@@ -32,6 +33,7 @@ describe('Weather forecast app', () => {
     submitBtn = inputGroup.querySelector('#submitBtn');
     savedCitiesList = inputGroup.querySelector('#savedCitiesList');
   });
+
   describe('pageInit', () => {
     it('pageInit is a function', () => {
       expect(pageInit).toBeInstanceOf(Function);
@@ -76,6 +78,22 @@ describe('Weather forecast app', () => {
     it('button click calls getWeatherInCity', async () => {
       inputCity.value = 'London';
       submitBtn.click();
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledWith('London');
+    });
+
+    it('updateWeather calls getWeatherInCity', async () => {
+      inputCity.value = 'London';
+      getWeatherInCity.mockResolvedValue({ city: 'Лондон', temp: -33.43, icon: '01d', cod: 200 });
+      updateWeather(inputCity.value);
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledWith('London');
+    });
+
+    it('click on savedCitiesList calls getWeatherInCity', async () => {
+      const cities = ['London'];
+      renderCitiesList(savedCitiesList, cities);
+      savedCitiesList.querySelector('li').click();
       expect(getWeatherInCity).toHaveBeenCalledTimes(1);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });

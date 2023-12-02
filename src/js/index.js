@@ -52,7 +52,7 @@ export function pageInit(parent) {
 
   savedCitiesList = appendParentWithChild(inputGroup, 'ul', 'savedCitiesList');
   savedCitiesList.addEventListener('click', (ev) => {
-    if (ev.target.tagName === 'li') {
+    if (ev.target.tagName === 'LI') {
       const city = ev.target.innerHTML;
       updateWeather(city);
     }
