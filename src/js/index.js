@@ -1,5 +1,6 @@
 import getCityByIP from './ip';
 import getWeatherInCity from './weather';
+import appendParentWithChild from './appendParentWithChild';
 
 let currentWeatherEl;
 let currentCityEl;
@@ -8,11 +9,12 @@ let currentIconEl;
 let inputCity;
 let submitBtn;
 
-function appendParentWithChild(parentEl, tag, childId = '') {
-  const child = document.createElement(tag);
-  child.id = childId;
-  parentEl.append(child);
-  return child;
+export function weatherRender(weather) {
+  if (weather) {
+    currentCityEl.innerHTML = `Current city: ${weather.city}`;
+    currentTempEl.innerHTML = `Current temperature: ${weather.temp}`;
+    currentIconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.icon}@2x.png">`;
+  }
 }
 
 export function pageInit(parent) {
@@ -24,19 +26,11 @@ export function pageInit(parent) {
   currentTempEl = appendParentWithChild(currentWeatherEl, 'div', 'currentTemp');
   currentIconEl = appendParentWithChild(currentWeatherEl, 'div', 'currentIcon');
 
-  const inputGroup = appendParentWithChild(parent, 'div', 'inputGroup');
+  const inputGroup = appendParentWithChild(parent, 'form', 'inputGroup');
   inputCity = appendParentWithChild(inputGroup, 'input', 'inputCity');
   inputCity.placeholder = 'Enter city';
   submitBtn = appendParentWithChild(inputGroup, 'button', 'submitBtn');
   submitBtn.innerHTML = 'Get weather forecast';
-}
-
-export function weatherRender(weather) {
-  if (weather) {
-    currentCityEl.innerHTML = `Current city: ${weather.city}`;
-    currentTempEl.innerHTML = `Current temperature: ${weather.temp}`;
-    currentIconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.icon}@2x.png">`;
-  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
