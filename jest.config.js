@@ -25,7 +25,7 @@ const config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  // coverageDirectory: undefined,
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -33,15 +33,14 @@ const config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'babel',
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: [
-  //   "json",
-  //   "text",
-  //   "lcov",
-  //   "clover"
-  // ],
+  coverageReporters: [
+    'json',
+    'json-summary'
+    // text', 'lcov', 'clover'
+  ],
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
@@ -153,7 +152,7 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

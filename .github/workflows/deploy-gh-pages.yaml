@@ -29,7 +29,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: prod # The folder the action should deploy.
-          
 
       - name: Coverage Badge
         uses: we-cli/coverage-badge-action@v1.0.1
