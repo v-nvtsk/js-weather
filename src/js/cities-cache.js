@@ -26,6 +26,11 @@ export default {
       this.cities = [newItem, ...this.cities];
     }
     this.saveItems();
+    this.listeners.forEach((el) => el(this.cities));
     return newItem;
+  },
+  listeners: [],
+  subscribe(func) {
+    this.listeners.push(func);
   }
 };

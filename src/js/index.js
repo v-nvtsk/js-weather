@@ -51,10 +51,16 @@ export function pageInit(parent) {
 document.addEventListener('DOMContentLoaded', async () => {
   const appContainer = document.querySelector('#app');
   pageInit(appContainer);
+
   citiesCache.init();
+  citiesCache.subscribe((cities) => {
+    renderCitiesList(savedCitiesList, cities);
+  });
 
   const city = await getCityByIP();
   const weather = await getWeatherInCity(city);
-  weatherRender(weather);
-  renderCitiesList(savedCitiesList, citiesCache.loadItems());
+  if (weather) {
+    weatherRender(weather);
+    citiesCache.addCity(weather.city);
+  }
 });
