@@ -31,6 +31,13 @@ export function pageInit(parent) {
   inputCity.placeholder = 'Enter city';
   submitBtn = appendParentWithChild(inputGroup, 'button', 'submitBtn');
   submitBtn.innerHTML = 'Get weather forecast';
+
+  inputGroup.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const city = inputCity.value;
+    const weather = await getWeatherInCity(city);
+    weatherRender(weather);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
