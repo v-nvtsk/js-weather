@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { pageInit, weatherRender } from '../js/index';
+import { pageInit, weatherRender } from './index';
 
 describe('Weather forecast app', () => {
   let currentWeatherEl;
