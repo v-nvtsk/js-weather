@@ -15,8 +15,8 @@ let savedCitiesList;
 
 export function weatherRender(weather) {
   if (weather) {
-    currentCityEl.innerHTML = `Current city: ${weather.city}`;
-    currentTempEl.innerHTML = `Current temperature: ${weather.temp}`;
+    currentCityEl.innerHTML = `${weather.city}`;
+    currentTempEl.innerHTML = `${weather.temp}`;
     currentIconEl.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather.icon}@2x.png">`;
   }
 }

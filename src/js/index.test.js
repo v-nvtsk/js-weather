@@ -69,8 +69,8 @@ describe('Weather forecast app', () => {
     });
 
     it('weatherRender renders weather data', () => {
-      expect(currentCityEl.innerHTML).toEqual(`Current city: ${weatherData.city}`);
-      expect(currentTempEl.innerHTML).toEqual(`Current temperature: ${weatherData.temp}`);
+      expect(currentCityEl.innerHTML).toEqual(`${weatherData.city}`);
+      expect(currentTempEl.innerHTML).toEqual(`${weatherData.temp}`);
       expect(currentIconEl.innerHTML).toEqual(
         `<img src=\"https://openweathermap.org/img/wn/${weatherData.icon}@2x.png\">`
       );
