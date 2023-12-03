@@ -21,6 +21,7 @@ jobs:
       - name: Test
         run: npm test
 
+      - run: ls -la
       - name: Create ci-badges
         uses: gaelgirodon/ci-badges-action@v1
         with:
