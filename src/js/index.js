@@ -32,7 +32,7 @@ export async function updateWeather(city) {
 
 export function pageInit(parent) {
   const header = appendParentWithChild(parent, 'h1', 'header');
-  header.innerHTML = 'Weather forecast';
+  header.innerHTML = 'Прогноз погоды';
 
   currentWeatherEl = appendParentWithChild(parent, 'div', 'currentWeather');
   currentCityEl = appendParentWithChild(currentWeatherEl, 'div', 'currentCity');
