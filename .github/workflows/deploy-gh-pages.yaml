@@ -21,9 +21,8 @@ jobs:
       - name: Test
         run: npm test
 
-      - run: ls -la
-      - name: Create ci-badges
-        uses: gaelgirodon/ci-badges-action@v1
+      - name: CI Badges
+        uses: GaelGirodon/ci-badges-action@v1.1.0
         with:
           gist-id: f9b687636482339cabd6a8c4b369f3eb
           token: ${{ secrets.GIST_TOKEN }}
