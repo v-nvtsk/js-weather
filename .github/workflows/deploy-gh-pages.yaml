@@ -25,7 +25,7 @@ jobs:
       - name: Create ci-badges
         uses: gaelgirodon/ci-badges-action@v1
         with:
-          gist-id: <gist-id>
+          gist-id: f9b687636482339cabd6a8c4b369f3eb
           token: ${{ secrets.GIST_TOKEN }}
 
       - name: Build prod
