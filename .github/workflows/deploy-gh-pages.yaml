@@ -21,6 +21,12 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Create ci-badges
+        uses: gaelgirodon/ci-badges-action@v1
+        with:
+          gist-id: <gist-id>
+          token: ${{ secrets.GIST_TOKEN }}
+
       - name: Build prod
         run: |
           npm run build:prod
@@ -29,20 +35,3 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: prod # The folder the action should deploy.
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      # Your original steps
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: Install
-        run: npm install
-      - name: Test and Coverage
-        run: npm run test # or npm run coverage
-
-      # Add this
-      - name: Update Coverage Badge
-        # GitHub actions: default branch variable
-        # https://stackoverflow.com/questions/64781462/github-actions-default-branch-variable
-        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-        uses: we-cli/coverage-badge-action@main
