@@ -43,7 +43,7 @@ export function pageInit(parent) {
   inputCity = appendParentWithChild(inputGroup, 'input', 'inputCity');
   inputCity.placeholder = 'Enter city';
   submitBtn = appendParentWithChild(inputGroup, 'button', 'submitBtn');
-  submitBtn.innerHTML = 'Get weather forecast';
+  submitBtn.innerHTML = 'Получить погоду';
 
   inputGroup.addEventListener('submit', async (ev) => {
     ev.preventDefault();
