@@ -1,4 +1,4 @@
-name: Deploy to GithubPages
+name: Lint and Test
 
 # on:
 #   push:
