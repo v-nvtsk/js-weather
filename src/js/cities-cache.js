@@ -17,14 +17,15 @@ export default {
   addCity(cityName) {
     if (!cityName) return false;
     const newItem = cityName.toUpperCase();
-    const existIndex = this.cities.indexOf(newItem);
-    if (existIndex !== -1) {
-      this.cities = [newItem, ...this.cities.slice(0, existIndex), ...this.cities.slice(existIndex + 1)];
-    } else if (this.cities.length > 9) {
-      this.cities = [newItem, ...this.cities.slice(0, 9)];
-    } else {
-      this.cities = [newItem, ...this.cities];
+    const tempArr = [newItem];
+    for (let i = 0; i < this.cities.length; i++) {
+      if (this.cities[i] !== newItem) {
+        tempArr.push(this.cities[i]);
+      }
     }
+    if (tempArr.length === 11) tempArr.pop();
+    this.cities = tempArr;
+
     this.saveItems();
     this.listeners.forEach((el) => el(this.cities));
     return newItem;
