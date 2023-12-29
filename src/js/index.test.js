@@ -18,6 +18,7 @@ describe('Weather forecast app', () => {
   let savedCitiesList;
 
   beforeAll(() => {
+    document.body.innerHTML = '';
     const container = document.createElement('div');
     container.id = 'app';
     document.body.append(container);
