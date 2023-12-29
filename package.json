@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx webpack serve --env mode=development",
     "test": "jest",
-    "test:watch": "clear && jest --watch --verbose",
+    "test:watch": "clear && jest ./src --watch --verbose",
     "lint-staged": "lint-staged",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
