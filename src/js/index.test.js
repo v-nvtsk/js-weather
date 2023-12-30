@@ -61,15 +61,13 @@ describe('Weather forecast app', () => {
       temp: -3.43,
       icon: '04d'
     };
-    beforeEach(() => {
-      weatherRender(weatherData);
-    });
 
     it('weatherRender is a function', () => {
       expect(weatherRender).toBeInstanceOf(Function);
     });
 
     it('weatherRender renders weather data', () => {
+      weatherRender(weatherData);
       expect(currentCityEl.innerHTML).toEqual(`${weatherData.city}`);
       expect(currentTempEl.innerHTML).toEqual(`${weatherData.temp}`);
       expect(currentIconEl.innerHTML).toEqual(
