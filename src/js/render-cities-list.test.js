@@ -3,10 +3,13 @@ import renderCitiesList from './render-cities-list';
 describe('renderCitiesList', () => {
   let parent;
   beforeEach(() => {
-    document.body.innerHTML = '';
     parent = document.createElement('ul');
     parent.id = 'savedCitiesList';
     document.body.append(parent);
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = '';
   });
 
   it('renderCitiesList is a function', () => {

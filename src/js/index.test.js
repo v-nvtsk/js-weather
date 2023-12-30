@@ -17,8 +17,7 @@ describe('Weather forecast app', () => {
   let submitBtn;
   let savedCitiesList;
 
-  beforeAll(() => {
-    document.body.innerHTML = '';
+  beforeEach(() => {
     const container = document.createElement('div');
     container.id = 'app';
     document.body.append(container);
@@ -34,6 +33,10 @@ describe('Weather forecast app', () => {
     inputCity = inputGroup.querySelector('#inputCity');
     submitBtn = inputGroup.querySelector('#submitBtn');
     savedCitiesList = parent.querySelector('#savedCitiesList');
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = '';
   });
 
   describe('pageInit', () => {
