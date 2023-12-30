@@ -114,5 +114,14 @@ describe('Weather forecast app', () => {
       expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
+    it('misclick on savedCitiesList but not city do nothing', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
+      const cities = ['London'];
+      renderCitiesList(savedCitiesList, cities);
+      savedCitiesList.click();
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+    });
   });
 });
