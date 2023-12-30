@@ -84,25 +84,34 @@ describe('Weather forecast app', () => {
     });
 
     it('button click calls getWeatherInCity', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
       inputCity.value = 'London';
       submitBtn.click();
-      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
 
     it('updateWeather calls getWeatherInCity', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
       inputCity.value = 'London';
       getWeatherInCity.mockResolvedValue({ city: 'Лондон', temp: -33.43, icon: '01d', cod: 200 });
       updateWeather(inputCity.value);
-      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
 
     it('click on savedCitiesList calls getWeatherInCity', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
       const cities = ['London'];
       renderCitiesList(savedCitiesList, cities);
-      savedCitiesList.querySelector('li').click();
-      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      savedCitiesList.querySelector('LI').click();
+      expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
   });
