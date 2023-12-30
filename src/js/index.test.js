@@ -66,6 +66,11 @@ describe('Weather forecast app', () => {
       expect(weatherRender).toBeInstanceOf(Function);
     });
 
+    it('weatherRender do nothing with no data', () => {
+      weatherRender();
+      expect(currentCityEl.innerHTML).toEqual('');
+    });
+
     it('weatherRender renders weather data', () => {
       weatherRender(weatherData);
       expect(currentCityEl.innerHTML).toEqual(`${weatherData.city}`);
