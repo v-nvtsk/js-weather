@@ -9,6 +9,10 @@ describe('renderCitiesList', () => {
     document.body.append(parent);
   });
 
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
   it('renderCitiesList is a function', () => {
     expect(renderCitiesList).toBeInstanceOf(Function);
   });

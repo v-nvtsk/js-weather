@@ -17,8 +17,7 @@ describe('Weather forecast app', () => {
   let submitBtn;
   let savedCitiesList;
 
-  beforeAll(() => {
-    document.body.innerHTML = '';
+  beforeEach(() => {
     const container = document.createElement('div');
     container.id = 'app';
     document.body.append(container);
@@ -34,6 +33,10 @@ describe('Weather forecast app', () => {
     inputCity = inputGroup.querySelector('#inputCity');
     submitBtn = inputGroup.querySelector('#submitBtn');
     savedCitiesList = parent.querySelector('#savedCitiesList');
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = '';
   });
 
   describe('pageInit', () => {
@@ -61,15 +64,18 @@ describe('Weather forecast app', () => {
       temp: -3.43,
       icon: '04d'
     };
-    beforeEach(() => {
-      weatherRender(weatherData);
-    });
 
     it('weatherRender is a function', () => {
       expect(weatherRender).toBeInstanceOf(Function);
     });
 
+    it('weatherRender do nothing with no data', () => {
+      weatherRender();
+      expect(currentCityEl.innerHTML).toEqual('');
+    });
+
     it('weatherRender renders weather data', () => {
+      weatherRender(weatherData);
       expect(currentCityEl.innerHTML).toEqual(`${weatherData.city}`);
       expect(currentTempEl.innerHTML).toEqual(`${weatherData.temp}`);
       expect(currentIconEl.innerHTML).toEqual(
@@ -78,26 +84,44 @@ describe('Weather forecast app', () => {
     });
 
     it('button click calls getWeatherInCity', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
       inputCity.value = 'London';
       submitBtn.click();
-      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
 
     it('updateWeather calls getWeatherInCity', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
       inputCity.value = 'London';
       getWeatherInCity.mockResolvedValue({ city: 'Лондон', temp: -33.43, icon: '01d', cod: 200 });
       updateWeather(inputCity.value);
-      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
     });
 
     it('click on savedCitiesList calls getWeatherInCity', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
       const cities = ['London'];
       renderCitiesList(savedCitiesList, cities);
-      savedCitiesList.querySelector('li').click();
-      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+      savedCitiesList.querySelector('LI').click();
+      expect(getWeatherInCity).toHaveBeenCalledTimes(2);
       expect(getWeatherInCity).toHaveBeenCalledWith('London');
+    });
+    it('misclick on savedCitiesList but not city do nothing', async () => {
+      // first run on startup
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
+
+      const cities = ['London'];
+      renderCitiesList(savedCitiesList, cities);
+      savedCitiesList.click();
+      expect(getWeatherInCity).toHaveBeenCalledTimes(1);
     });
   });
 });
